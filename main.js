@@ -1,13 +1,13 @@
 /*******************
  * OUR HELPER CODE *
-*******************/
+ *******************/
 
 /*
  * Here we add the squares to the canvas dynamically.
  * You can mostly leave this section alone!
  * But if you want to change how wide the canvas is,
  * there are just two steps:
- * 
+ *
  * 1. Change the `gridWidth` value below.
  * 2. Change the `grid-template-rows` and
  * `grid-template-columns` to match.
@@ -15,12 +15,12 @@
  * To make the second one happen, the number to change
  * is the first argument to `repeat`, currently set at 10.
  */
-const gridWidth = 10;
+const gridWidth = 80;
 let count = 0;
 while (count <= gridWidth * gridWidth) {
-  const canvas = document.querySelector('.canvas');
-  const div = document.createElement('div');
-  div.className = 'square color-5';
+  const canvas = document.querySelector(".canvas");
+  const div = document.createElement("div");
+  div.className = "square color-5";
   canvas.appendChild(div);
   count++;
 }
@@ -44,16 +44,46 @@ while (count <= gridWidth * gridWidth) {
 
 /***********
  * QUERIES *
-***********/
+ ***********/
 
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
-
-
+let colorList = document.querySelectorAll(".palette div");
+let brush = document.querySelector(".current-brush");
+let canvas = document.querySelectorAll(".canvas div");
 /****************************
  * EVENT LISTENER FUNCTIONS *
-****************************/
+ ****************************/
+
+
+for (let i = 0; i < colorList.length; i++) {
+  colorList[i].addEventListener("click", function () {
+    let colorListArr = colorList[i].classList;
+    brush.classList.remove(brush.classList[1]);
+    brush.classList.add(colorListArr[1]);
+  });
+}
+
+let isMouseDown = false;
+for (let i = 0; i < canvas.length; i++) {
+  canvas[i].addEventListener("mouseenter", function () {
+    if (isMouseDown === true) {
+      let newColor = canvas[i].classList;
+      newColor.remove(newColor[1]);
+      newColor.add(brush.classList[1]);
+    }
+  });
+}
+
+let body = document.querySelector("body");
+body.addEventListener("mousedown", function () {
+  isMouseDown = true;
+});
+
+body.addEventListener("mouseup", function () {
+  isMouseDown = false;
+});
 
 // Now add some functions to handle clicking one particular square
 // and clicking one particular palette color. You can leave them
@@ -61,11 +91,9 @@ while (count <= gridWidth * gridWidth) {
 // run as event listeners (after the next step is set up) isn't a
 // bad idea for testing purposes.
 
-
-
 /**************************
  * WIRING IT ALL TOGETHER *
-**************************/
+ **************************/
 
 // Now: wiring up our event listeners to our html node elements.
 // You'll need to add the appropriate event listener for each

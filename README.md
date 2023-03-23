@@ -5,7 +5,7 @@ A very simple paint program.
 
 ### Introduction
 
-Ever used [MS Paint](https://en.wikipedia.org/wiki/Microsoft_Paint)? It was a very simple paint program for Windows. We're going to take that limited-feature app and implement... even fewer features.
+Ever used [MS Paint](https://en.wikipedia.org/wiki/Micrmouseenterosoft_Paint)? It was a very simple paint program for Windows. We're going to take that limited-feature app and implement... even fewer features.
 
 Welcome to a fake MS Paint. Welcome to... BudgetSoft Paint!
 
